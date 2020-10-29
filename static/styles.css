@@ -1,0 +1,10 @@
+label {
+    font-size: 1em;
+    font-weight: bold;
+    color: #555;
+}
+
+tr:nth-child(even) {
+    background-color: #555;
+    color: #fff;
+}
