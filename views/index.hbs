@@ -27,13 +27,17 @@
         <button type="submit" class="btn btn-primary btn-lg">Add to Cart</button>    
     </div>
 
+    <input type="hidden" name="cartstate" value="{{ cartState }}">
+
 </form>
 
 <table class="table mt-5">
     <thead>
-        <th>Item</th>
-        <th>Quantity</th>
-        <th>Unit Price</th>
+        <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+        </tr>
     </thead>
     <tbody>
         {{#each itemList}}

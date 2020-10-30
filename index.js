@@ -22,19 +22,25 @@ app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/static'));
 
 // Configure the routes
+
 app.get('/', (req, res) => {
+    const cartState = [];
     res.status(200);
     res.type('text/html');
-    res.render('index');
+    res.render('index' , {cartState : JSON.stringify(cartState)});
 });
 
 app.post('/', express.urlencoded({extended:true}), (req, res) => {
 
-    itemList.push(req.body);
+    const { item, quantity, unitprice, cartstate } = req.body;
+
+    const itemList = JSON.parse(cartstate);
+
+    itemList.push({item, quantity, unitprice});
 
     res.status(201);
     res.type('text/html');
-    res.render('index' , {itemList});
+    res.render('index' , {itemList:itemList, cartState:JSON.stringify(itemList)});
 });
 
 // Start the server
